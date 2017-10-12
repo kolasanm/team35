@@ -51,6 +51,14 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        if (!columnHasCards(columnTo))
+        {
+            Card moveCard = getTopCard(columnFrom); //gets top card
+            addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
+            removeCardFromCol(columnFrom); //removes the top card from the "from" col
+        }
+        else
+            System.out.println("Cannot move card to unempty column.");
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {

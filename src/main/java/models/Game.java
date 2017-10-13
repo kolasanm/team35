@@ -16,6 +16,11 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; i++)
+        {
+            java.util.List<Card> newCardList = new ArrayList<>(); // creates an empty new list of Cards and allocates to heap
+            cols.set(i, newCardList); // sets the column to point to the new ArrayList of Cards
+        }
     }
 
     public void buildDeck() {
@@ -33,6 +38,22 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+
+        int beforeSize = deck.size();
+        System.out.println("Size of deck before deal is" + beforeSize);     //find the initial size of the deck
+
+        for(int i = 0; i < 4; i++)
+        {
+            Card topCard = deck.get(0);     //get topmost card from deck
+
+            deck.remove(0);           //remove the card from the deck
+
+            addCardToCol(i, topCard);       //add topmost card from deck into a column
+
+        }
+
+        int afterSize = deck.size();
+        System.out.println("Size of deck after deal is" + afterSize);       //the new size of the deck should be 4 less
     }
 
     public void remove(int columnNumber) {
@@ -63,6 +84,14 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        if (!columnHasCards(columnTo))
+        {
+            Card moveCard = getTopCard(columnFrom); //gets top card
+            addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
+            removeCardFromCol(columnFrom); //removes the top card from the "from" col
+        }
+        else
+            System.out.println("Cannot move card to unempty column.");
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {

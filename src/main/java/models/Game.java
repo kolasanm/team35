@@ -42,7 +42,7 @@ public class Game {
             this.cols.get(columnNumber).remove(getTopCard(columnNumber));
         } else {
             // output if columnHasCards returns false
-            System.out.println("--Sorry you can't remove from an empty column--");
+            System.out.println("---Sorry you can't remove from an empty column---");
         }
     }
 

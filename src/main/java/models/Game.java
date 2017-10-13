@@ -36,7 +36,8 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
+        // Implemented by Bharath P.
+        // remove the top card from the indicated columns
         if(columnHasCards(columnNumber)) {
             this.cols.get(columnNumber).remove(getTopCard(columnNumber));
         } else {
@@ -45,6 +46,7 @@ public class Game {
     }
 
     private boolean columnHasCards(int columnNumber) {
+        // Implemented by Bharath P.
         // check indicated column for number of cards; if no cards return false, otherwise return true
         if (this.cols.get(columnNumber).isEmpty()){
             return false;

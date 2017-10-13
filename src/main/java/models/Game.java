@@ -37,11 +37,20 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        if(columnHasCards(columnNumber)) {
+            this.cols.get(columnNumber).remove(getTopCard(columnNumber));
+        } else {
+            System.out.println("--Sorry you can't remove from an empty column--");
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        return false;
+        if (this.cols.get(columnNumber).isEmpty()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private Card getTopCard(int columnNumber) {

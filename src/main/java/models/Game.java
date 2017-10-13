@@ -33,6 +33,22 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+
+        int beforeSize = deck.size();
+        System.out.println("Size of deck before deal is" + beforeSize);     //find the initial size of the deck
+
+        for(int i = 0; i < 4; i++)
+        {
+            Card topCard = deck.get(0);     //get topmost card from deck
+
+            deck.remove(0);           //remove the card from the deck
+
+            addCardToCol(i, topCard);       //add topmost card from deck into a column
+
+        }
+
+        int afterSize = deck.size();
+        System.out.println("Size of deck after deal is" + afterSize);       //the new size of the deck should be 4 less
     }
 
     public void remove(int columnNumber) {

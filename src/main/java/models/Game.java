@@ -15,11 +15,11 @@ public class Game {
 
 
     public Game(){
-        // initialize a new game such that each column can store cards
+        // initialize a new game such that each column can store card
         for (int i = 0; i < 4; i++)
         {
-            java.util.List<Card> newCardList = new ArrayList<>(); // creates an empty new list of Cards and allocates to heap
-            cols.set(i, newCardList); // sets the column to point to the new ArrayList of Cards
+            //adds a new ArrayList of type card to each index is cols - initial size of card array is 0
+            cols.add(new ArrayList<Card>());
         }
     }
 

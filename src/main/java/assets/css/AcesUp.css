@@ -2,6 +2,31 @@ tr{
 width:500px;
 }
 
+div {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.leftDiv
+{
+  height: 355px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  float: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.bottomDiv
+{
+  padding-top: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  padding-bottom: 10px;
+}
+
 td{
 width:100px;
 height:20px;
@@ -9,7 +34,7 @@ text-align:center;
 }
 
 .title{
-font-weight: bold;
+  font-weight: bold;
 }
 
 .cardLocation{

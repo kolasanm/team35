@@ -1,16 +1,21 @@
+<div>
 <h1>Aces Up</h1>
+</div>
 
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
 
+<div class="leftDiv">
+  <h3> Instructions </h3>
+
+</div>
+
+<div>
 <table>
     <tr class="title">
-        <td>Column0</td>
-        <td >Column1</td>
-        <td >Column2</td>
-        <td >Column3</td>
+        <BR> <button id="Remove1"> Remove Column1</button><button id="Remove2">Remove Column2</button><button id="Remove3">Remove Column3</button><button id="Remove4">Remove Column4</button>
     </tr>
 
     <tr><td class="columnOfCards" id="c0">
@@ -87,11 +92,13 @@
         </td>
     </tr>
 </table>
+</div>
 
+<div class="bottomDiv">
 <button id="dealButton">Deal</button>
-<BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
 
 <BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
+</div>
 
 <script>
 
@@ -189,7 +196,6 @@ $.ajax({
 
 
 </script>
-
 
 
 </body>

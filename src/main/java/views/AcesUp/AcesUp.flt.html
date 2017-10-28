@@ -8,7 +8,8 @@
 <body>
 
 <div class="leftDiv">
-    <h3> Instructions </h3>
+    <button id="instructionButton" class="buttons">Instructions</button>
+    <p id="instButt"></p>
     <img src="/assets/css/svg-cards/back@2x.png" width="100px" height="150px"/>
     <br>
     <button id="dealButton" class="buttons">Deal Cards</button>
@@ -216,6 +217,7 @@ $.ajax({
     </div>
 </div>
 
+
 <script>
 
 var moveButton = document.getElementById('moveButton');
@@ -238,6 +240,18 @@ hiddenStuff[j].style.display = 'none';
 });
 
 </script>
+
+<script>
+    var instButton = document.getElementById('instructionButton');
+
+        instButton.addEventListener('click', function(){
+            document.getElementById("instButt").innerHTML = "-Aces Up is a solitaire game<br>-The objective of this game is<br>to remove all card from the table<br>-You can remove card<br>only if other cards<br>of the same suit<br>and of higher value exist<br>-You can move cards<br>to empty slots from<br>the remaining piles";
+    }
+    );
+
+</script>
+
+
 
 
 </body>

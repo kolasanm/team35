@@ -71,8 +71,15 @@ public class Game {
     public void remove(int columnNumber) {
         // Implemented by Bharath P.
         // remove the top card from the indicated columns
+
         if(columnHasCards(columnNumber)) {
-            this.cols.get(columnNumber).remove(getTopCard(columnNumber));
+            //this.cols.get(columnNumber).remove(getTopCard(columnNumber));
+            if(isCardRemovable(getTopCard(columnNumber)) == true){
+                removeCardFromCol(columnNumber);
+            }
+            else{
+                System.out.println("---Sorry you can't remove this card---");
+            }
         } else {
             // output if columnHasCards returns false
             System.out.println("---Sorry you can't remove from an empty column---");
@@ -103,9 +110,26 @@ public class Game {
                 addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
                 removeCardFromCol(columnFrom); //removes the top card from the "from" col
             }
+            else{
+                System.out.println("You can only move Aces.");
+            }
         }
-        else
+        else {
             System.out.println("Cannot move card to unempty column.");
+        }
+    }
+
+    public boolean isCardRemovable(Card tempCard)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+
+            if(getTopCard(i).getSuit() == tempCard.getSuit() && getTopCard(i).getValue() > tempCard.getValue())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {

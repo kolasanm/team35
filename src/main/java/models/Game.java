@@ -99,8 +99,10 @@ public class Game {
         if (!columnHasCards(columnTo))
         {
             Card moveCard = getTopCard(columnFrom); //gets top card
-            addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
-            removeCardFromCol(columnFrom); //removes the top card from the "from" col
+            if (moveCard.getValue() == 14) { // checks to see if the card is an Ace
+                addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
+                removeCardFromCol(columnFrom); //removes the top card from the "from" col
+            }
         }
         else
             System.out.println("Cannot move card to unempty column.");

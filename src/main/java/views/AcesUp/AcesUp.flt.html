@@ -108,27 +108,56 @@ var game;
 
 function display(game) {
 console.log(game);
+var card;
+
+    function buildCard()
+    {
+        if (card.value == 11)
+            card.value = "J";
+        else if (card.value == 12)
+            card.value = "Q";
+        else if (card.value == 13)
+            card.value = "K";
+        else if (card.value == 14)
+            card.value = "A";
+        else {}
+
+        if (card.suit == "Hearts")
+            card.suit = "<span class=\"cardColor\">\u2665</span>";
+        else if (card.suit == "Diamonds")
+            card.suit = "<span class=\"cardColor\">\u2666</span>";
+        else if (card.suit == "Spades")
+            card.suit = "\u2660";
+        else if (card.suit == "Clubs")
+            card.suit = "\u2663";
+        else {}
+    }
 
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+        card = {value : val.value, suit : val.suit};
+        buildCard();
+        $( '#c0 .l'+key ).html(card.value + card.suit);
     });
 
- $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
+    $.each(game.cols[1], function( key, val ) {
+        card = {value : val.value, suit : val.suit};
+        buildCard();
+        $( '#c1 .l'+key ).html(card.value + card.suit);
     });
 
- $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
+    $.each(game.cols[2], function( key, val ) {
+        card = {value : val.value, suit : val.suit};
+        buildCard();
+        $( '#c2 .l'+key ).html(card.value + card.suit);
     });
 
- $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
+    $.each(game.cols[3], function( key, val ) {
+        card = {value : val.value, suit : val.suit};
+        buildCard();
+        $( '#c3 .l'+key ).html(card.value + card.suit);
     });
-
-
-
 }
 
 // Calls ApplicationController.gameGet()

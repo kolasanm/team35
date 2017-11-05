@@ -20,12 +20,12 @@ body{
 }
 
 tr{
-width:500px;
+//width:500px;
 }
 
 td{
-width:100px;
-height:20px;
+width:120px;
+height:50px;
 text-align:center;
 }
 
@@ -94,7 +94,28 @@ font-weight: bold;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
+    border-radius: 15px;
 }
+
+.buttonsR{
+    font-family: PhilosopherReg;
+    background-color: white;
+    border: none;
+    color: black;
+    width: 120px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+
 
 .buttons:hover{
     background-color: #008CBA;
@@ -170,66 +191,6 @@ input[type=text]{
   padding: 20px;
 }
 
-.hiddenInstruct{
-  display:none;
-}
-
-#instruction-backdrop {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-#instruction-modal {
-  position: fixed;
-  padding-top: 250px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1010;
-  overflow: scroll;
-}
-
-.instruction-dialog {
-  width: auto;
-  max-width: 300px;
-  min-width: 150px;
-  min-height: 150px;
-  margin: 40px auto;
-  background-color: #fff;
-  border-radius: 15px;
-}
-
-.instruction-header {
-  position: relative;
-  padding: 10px 20px;
-}
-
-.instruction-header h3 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.instruction-close-button {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-size: 24px;
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.instruction-body {
-  padding: 20px;
-}
-
 .cardColor{
     color: red;
 }
@@ -237,6 +198,7 @@ input[type=text]{
 .columnOfCards{
 width: 175px;
 }
+
 
 table{
     width:125px;

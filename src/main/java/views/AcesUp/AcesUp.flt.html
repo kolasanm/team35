@@ -15,40 +15,6 @@
     <button id="dealButton" class="buttons">Deal Cards</button>
 </div>
 
-<div class="instruction-backdrop" class="hiddenInstruct"></div>
-<div id="instruction-modal" class="hiddenInstruct">
-    <div class="instruction-dialog">
-        <div class="instruction-header">
-            <h3>INSTRUCTIONS</h3>
-            <button type="button" class="instruction-close-button">&times;</button>
-        </div>
-        <div class="instruction-body">
-            <p>
-              -Aces Up is a solitaire game<br>-The objective of this game is to remove <br> all card from the table<br>-You can remove card only if other cards of the same suit and of higher <br> value exist<br>-You can move cards to empty slots from the remaining piles
-            </p>
-        </div>
-    </div>
-</div>
-
-<script>
-  var instructionButton = document.getElementById('instructionButton');
-  var hideInstructions = document.getElementsByClassName('hiddenInstruct');
-
-  instructionButton.addEventListener('click', function(){
-    for(var k = 0; k<hideInstructions.length; k +=1){
-      hideInstructions[k].style.display = 'block';
-
-    }
-  });
-
-  var closeButton = document.querySelector('button.instruction-close-button');
-  closeButton.addEventListener('click', function(){
-    for(var l = 0; l<hideInstructions.length; l+=1){
-      hideInstructions[l].style.display = 'none';
-    }
-  });
-</script>
-
 <div class="rightDiv">
 <table>
     <tr class="title">

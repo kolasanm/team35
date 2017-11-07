@@ -7,7 +7,6 @@
 <div class="topDiv">
 
     <h1>Aces Up</h1>
-
 </div>
 
 <div class="container">
@@ -104,6 +103,37 @@
                     </table>
                 </td>
             </tr>
+
+  var closeButton = document.querySelector('button.instruction-close-button');
+  closeButton.addEventListener('click', function(){
+    for(var l = 0; l<hideInstructions.length; l+=1){
+      hideInstructions[l].style.display = 'none';
+    }
+  });
+</script>    
+    
+<div class="rightDiv">
+<table>
+    <tr class="title">
+        <BR> <button id="Remove1" class="buttonsR"> Remove</button><button id="Remove2" class="buttonsR">Remove</button><button id="Remove3" class="buttonsR">Remove</button><button id="Remove4" class="buttonsR">Remove</button>
+    </tr>
+
+    <tr><td class="columnOfCards" id="c0">
+        <table>
+            <tr><td class="cardLocation l0"></td></tr>
+            <tr><td class="cardLocation l1"></td></tr>
+            <tr><td class="cardLocation l2"></td></tr>
+            <tr><td class="cardLocation l3"></td></tr>
+            <tr><td class="cardLocation l4"></td></tr>
+            <tr><td class="cardLocation l5"></td></tr>
+            <tr><td class="cardLocation l6"></td></tr>
+            <tr><td class="cardLocation l7"></td></tr>
+            <tr><td class="cardLocation l8"></td></tr>
+            <tr><td class="cardLocation l9"></td></tr>
+            <tr><td class="cardLocation l10"></td></tr>
+            <tr><td class="cardLocation l11"></td></tr>
+            <tr><td class="cardLocation l12"></td></tr>
+            <tr><td class="cardLocation l13"></td></tr>
         </table>
 
     </div>

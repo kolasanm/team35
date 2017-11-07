@@ -36,12 +36,11 @@ div {
 
 .leftDiv
 {
-  height: 500px;
-  border-right-style: solid;
-  border-right-width: 2px;
+  height: 100%;
   float: left;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
   background: #19815D;
 }
 
@@ -52,6 +51,8 @@ div {
 
 .rightDiv
 {
+    padding-top: 50px;
+    text-align: center;
     background: #25AB7C;
 }
 
@@ -74,6 +75,11 @@ div {
 .cardLocation{
 width: 100px;
 background-color:#F0F0F0;
+}
+
+.cardpic{
+    padding-left: 20px;
+    padding-bottom: 15px;
 }
 
 .title{
@@ -118,6 +124,11 @@ font-weight: bold;
 
 
 .buttons:hover{
+    background-color: #008CBA;
+    color: white;
+}
+
+.buttonsR:hover{
     background-color: #008CBA;
     color: white;
 }

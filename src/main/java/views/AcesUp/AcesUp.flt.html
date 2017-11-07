@@ -1,139 +1,121 @@
-<div class="topDiv">
-<h1>Aces Up</h1>
-</div>
-
+<html>
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
 
-<div class="leftDiv">
-    <button id="instructionButton" class="buttons">Instructions</button>
-    <p id="instButt"></p>
-    <img src="/assets/css/svg-cards/back@2x.png" width="100px" height="150px"/>
-    <br>
-    <button id="dealButton" class="buttons">Deal Cards</button>
+<div class="topDiv">
+
+    <h1>Aces Up</h1>
+
 </div>
 
-<div class="instruction-backdrop" class="hiddenInstruct"></div>
-<div id="instruction-modal" class="hiddenInstruct">
-    <div class="instruction-dialog">
-        <div class="instruction-header">
-            <h3>INSTRUCTIONS</h3>
-            <button type="button" class="instruction-close-button">&times;</button>
-        </div>
-        <div class="instruction-body">
-            <p>
-              -Aces Up is a solitaire game<br>-The objective of this game is to remove <br> all card from the table<br>-You can remove card only if other cards of the same suit and of higher <br> value exist<br>-You can move cards to empty slots from the remaining piles
-            </p>
-        </div>
+<div class="container">
+
+    <div class="leftDiv">
+
+        <button id="instructionButton" class="buttons">Instructions</button>
+        <p id="instButt"></p>
+        <img class= "cardpic" src="/assets/css/svg-cards/playing-card2.jpg" width="100px" height="150px"/>
+        <br>
+        <button id="dealButton" class="buttons">Deal Cards</button>
+
     </div>
-</div>
+    <div class="middleDiv">
 
-<script>
-  var instructionButton = document.getElementById('instructionButton');
-  var hideInstructions = document.getElementsByClassName('hiddenInstruct');
+        <tr class="title">
+            <button id="Remove1" class="buttonsR">Remove</button>
+            <button id="Remove2" class="buttonsR">Remove</button>
+            <button id="Remove3" class="buttonsR">Remove</button>
+            <button id="Remove4" class="buttonsR">Remove</button>
+        </tr>
 
-  instructionButton.addEventListener('click', function(){
-    for(var k = 0; k<hideInstructions.length; k +=1){
-      hideInstructions[k].style.display = 'block';
-
-    }
-  });
-
-  var closeButton = document.querySelector('button.instruction-close-button');
-  closeButton.addEventListener('click', function(){
-    for(var l = 0; l<hideInstructions.length; l+=1){
-      hideInstructions[l].style.display = 'none';
-    }
-  });
-</script>
-    
-<div class="rightDiv">
-<table>
-    <tr class="title">
-        <BR> <button id="Remove1" class="buttonsR"> Remove</button><button id="Remove2" class="buttonsR">Remove</button><button id="Remove3" class="buttonsR">Remove</button><button id="Remove4" class="buttonsR">Remove</button>
-    </tr>
-
-    <tr><td class="columnOfCards" id="c0">
-        <table>
-            <tr><td class="cardLocation l0"></td></tr>
-            <tr><td class="cardLocation l1"></td></tr>
-            <tr><td class="cardLocation l2"></td></tr>
-            <tr><td class="cardLocation l3"></td></tr>
-            <tr><td class="cardLocation l4"></td></tr>
-            <tr><td class="cardLocation l5"></td></tr>
-            <tr><td class="cardLocation l6"></td></tr>
-            <tr><td class="cardLocation l7"></td></tr>
-            <tr><td class="cardLocation l8"></td></tr>
-            <tr><td class="cardLocation l9"></td></tr>
-            <tr><td class="cardLocation l10"></td></tr>
-            <tr><td class="cardLocation l11"></td></tr>
-            <tr><td class="cardLocation l12"></td></tr>
-            <tr><td class="cardLocation l13"></td></tr>
+        <table id="mainTable" align="center">
+            <tr><td class="columnOfCards" id="c0">
+                <table>
+                    <tr><td class="cardLocation l0"></td></tr>
+                    <tr><td class="cardLocation l1"></td></tr>
+                    <tr><td class="cardLocation l2"></td></tr>
+                    <tr><td class="cardLocation l3"></td></tr>
+                    <tr><td class="cardLocation l4"></td></tr>
+                    <tr><td class="cardLocation l5"></td></tr>
+                    <tr><td class="cardLocation l6"></td></tr>
+                    <tr><td class="cardLocation l7"></td></tr>
+                    <tr><td class="cardLocation l8"></td></tr>
+                    <tr><td class="cardLocation l9"></td></tr>
+                    <tr><td class="cardLocation l10"></td></tr>
+                    <tr><td class="cardLocation l11"></td></tr>
+                    <tr><td class="cardLocation l12"></td></tr>
+                    <tr><td class="cardLocation l13"></td></tr>
+                </table>
+            </td>
+                <td class="columnOfCards" id="c1">
+                    <table>
+                        <tr><td class="cardLocation l0"></td></tr>
+                        <tr><td class="cardLocation l1"></td></tr>
+                        <tr><td class="cardLocation l2"></td></tr>
+                        <tr><td class="cardLocation l3"></td></tr>
+                        <tr><td class="cardLocation l4"></td></tr>
+                        <tr><td class="cardLocation l5"></td></tr>
+                        <tr><td class="cardLocation l6"></td></tr>
+                        <tr><td class="cardLocation l7"></td></tr>
+                        <tr><td class="cardLocation l8"></td></tr>
+                        <tr><td class="cardLocation l9"></td></tr>
+                        <tr><td class="cardLocation l10"></td></tr>
+                        <tr><td class="cardLocation l11"></td></tr>
+                        <tr><td class="cardLocation l12"></td></tr>
+                        <tr><td class="cardLocation l13"></td></tr>
+                    </table>
+                </td>
+                <td class="columnOfCards" id="c2">
+                    <table>
+                        <tr><td class="cardLocation l0"></td></tr>
+                        <tr><td class="cardLocation l1"></td></tr>
+                        <tr><td class="cardLocation l2"></td></tr>
+                        <tr><td class="cardLocation l3"></td></tr>
+                        <tr><td class="cardLocation l4"></td></tr>
+                        <tr><td class="cardLocation l5"></td></tr>
+                        <tr><td class="cardLocation l6"></td></tr>
+                        <tr><td class="cardLocation l7"></td></tr>
+                        <tr><td class="cardLocation l8"></td></tr>
+                        <tr><td class="cardLocation l9"></td></tr>
+                        <tr><td class="cardLocation l10"></td></tr>
+                        <tr><td class="cardLocation l11"></td></tr>
+                        <tr><td class="cardLocation l12"></td></tr>
+                        <tr><td class="cardLocation l13"></td></tr>
+                    </table>
+                </td>
+                <td class="columnOfCards" id="c3">
+                    <table>
+                        <tr><td class="cardLocation l0"></td></tr>
+                        <tr><td class="cardLocation l1"></td></tr>
+                        <tr><td class="cardLocation l2"></td></tr>
+                        <tr><td class="cardLocation l3"></td></tr>
+                        <tr><td class="cardLocation l4"></td></tr>
+                        <tr><td class="cardLocation l5"></td></tr>
+                        <tr><td class="cardLocation l6"></td></tr>
+                        <tr><td class="cardLocation l7"></td></tr>
+                        <tr><td class="cardLocation l8"></td></tr>
+                        <tr><td class="cardLocation l9"></td></tr>
+                        <tr><td class="cardLocation l10"></td></tr>
+                        <tr><td class="cardLocation l11"></td></tr>
+                        <tr><td class="cardLocation l12"></td></tr>
+                        <tr><td class="cardLocation l13"></td></tr>
+                    </table>
+                </td>
+            </tr>
         </table>
-    </td>
-        <td class="columnOfCards" id="c1">
-            <table>
-                <tr><td class="cardLocation l0"></td></tr>
-                <tr><td class="cardLocation l1"></td></tr>
-                <tr><td class="cardLocation l2"></td></tr>
-                <tr><td class="cardLocation l3"></td></tr>
-                <tr><td class="cardLocation l4"></td></tr>
-                <tr><td class="cardLocation l5"></td></tr>
-                <tr><td class="cardLocation l6"></td></tr>
-                <tr><td class="cardLocation l7"></td></tr>
-                <tr><td class="cardLocation l8"></td></tr>
-                <tr><td class="cardLocation l9"></td></tr>
-                <tr><td class="cardLocation l10"></td></tr>
-                <tr><td class="cardLocation l11"></td></tr>
-                <tr><td class="cardLocation l12"></td></tr>
-                <tr><td class="cardLocation l13"></td></tr>
-            </table>
-        </td>
-        <td class="columnOfCards" id="c2">
-            <table>
-                <tr><td class="cardLocation l0"></td></tr>
-                <tr><td class="cardLocation l1"></td></tr>
-                <tr><td class="cardLocation l2"></td></tr>
-                <tr><td class="cardLocation l3"></td></tr>
-                <tr><td class="cardLocation l4"></td></tr>
-                <tr><td class="cardLocation l5"></td></tr>
-                <tr><td class="cardLocation l6"></td></tr>
-                <tr><td class="cardLocation l7"></td></tr>
-                <tr><td class="cardLocation l8"></td></tr>
-                <tr><td class="cardLocation l9"></td></tr>
-                <tr><td class="cardLocation l10"></td></tr>
-                <tr><td class="cardLocation l11"></td></tr>
-                <tr><td class="cardLocation l12"></td></tr>
-                <tr><td class="cardLocation l13"></td></tr>
-            </table>
-        </td>
-        <td class="columnOfCards" id="c3">
-            <table>
-                <tr><td class="cardLocation l0"></td></tr>
-                <tr><td class="cardLocation l1"></td></tr>
-                <tr><td class="cardLocation l2"></td></tr>
-                <tr><td class="cardLocation l3"></td></tr>
-                <tr><td class="cardLocation l4"></td></tr>
-                <tr><td class="cardLocation l5"></td></tr>
-                <tr><td class="cardLocation l6"></td></tr>
-                <tr><td class="cardLocation l7"></td></tr>
-                <tr><td class="cardLocation l8"></td></tr>
-                <tr><td class="cardLocation l9"></td></tr>
-                <tr><td class="cardLocation l10"></td></tr>
-                <tr><td class="cardLocation l11"></td></tr>
-                <tr><td class="cardLocation l12"></td></tr>
-                <tr><td class="cardLocation l13"></td></tr>
-            </table>
-        </td>
-    </tr>
-</table>
-</div>
 
-<div class="bottomDiv">
-    <BR>
-    <input type="text" id="from_col" value="From Column Number"  /><input type="text" id="to_col" value="To Column Number"  /> <button id="moveButton" class="buttons">Move</button>
+    </div>
+
+    <div class="rightDiv">
+
+        <input type="text" id="from_col" value="From"  /> <br>
+        <input type="text" id="to_col" value="To"  /> <br>
+        <button id="moveButton" class="buttons">Move</button>
+
+    </div>
+
 </div>
 
 <script>
@@ -280,7 +262,6 @@ $.ajax({
     </div>
 </div>
 
-
 <script>
 
 var moveButton = document.getElementById('moveButton');
@@ -302,6 +283,41 @@ hiddenStuff[j].style.display = 'none';
 }
 });
 
+</script>
+
+
+<div class="instruction-backdrop" class="hiddenInstruct"></div>
+<div id="instruction-modal" class="hiddenInstruct">
+    <div class="instruction-dialog">
+        <div class="instruction-header">
+            <h3>INSTRUCTIONS</h3>
+            <button type="button" class="instruction-close-button">&times;</button>
+        </div>
+        <div class="instruction-body">
+            <p>
+                -Aces Up is a solitaire game<br>-The objective of this game is to remove <br> all card from the table<br>-You can remove card only if other cards of the same suit and of higher <br> value exist<br>-You can move cards to empty slots from the remaining piles
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+  var instructionButton = document.getElementById('instructionButton');
+  var hideInstructions = document.getElementsByClassName('hiddenInstruct');
+
+  instructionButton.addEventListener('click', function(){
+    for(var k = 0; k<hideInstructions.length; k +=1){
+      hideInstructions[k].style.display = 'block';
+
+    }
+  });
+
+  var closeButton = document.querySelector('button.instruction-close-button');
+  closeButton.addEventListener('click', function(){
+    for(var l = 0; l<hideInstructions.length; l+=1){
+      hideInstructions[l].style.display = 'none';
+    }
+  });
 </script>
 
 

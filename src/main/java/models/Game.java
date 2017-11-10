@@ -30,7 +30,7 @@ public class Game {
         for(int i = 0; i < 4; i++)
         {
                 //get topmost card from deck
-
+            System.out.println("in deal 4 loop");
             Card topCard = deck.cards.get(0);        //remove the card from the deck
 
             columns[i].addCard(topCard);       //add topmost card from deck into a column

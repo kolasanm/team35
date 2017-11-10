@@ -6,7 +6,11 @@ import java.util.Random;
 
 public class Column {
 
-    private ArrayList<Card> col = new ArrayList<Card>();
+    public ArrayList<Card> col = new ArrayList<Card>();
+
+    public Column(){
+
+    }
 
     public Card getTopCard(){
         Card topCard = col.get(col.size()-1);

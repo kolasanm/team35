@@ -9,62 +9,37 @@ import java.util.Random;
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
-
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
-
+    public Column[] columns = new Column[4];
+    public Deck deck;
 
     public Game(){
         // initialize a new game such that each column can store card
-        for (int i = 0; i < 4; i++)
-        {
-            //adds a new ArrayList of type card to each index is cols - initial size of card array is 0
-            cols.add(new ArrayList<Card>());
-        }
-    }
-
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }
-
-    public void shuffle() {
-        // shuffles the deck so that it is random
-        
-        for (int i = 0; i < 51; i++) {
-            int random = i + (int) (Math.random() * (52-i)); //Randomly generates a number from 1 - 51
-            Card temp = deck.get(random); //Initialize a temp variable that stores the position of a card
-            deck.set(random, deck.get(i)); //Switch the card
-            deck.set(i, temp); //Store the card in index i in temp
-        } //Run through 52 iterations
-        
-        for (int i = 0; i < 52; i++) {
-            System.out.println(deck.get(i)); //Print out the deck to test the shuffle function
-
+        deck = new Deck();
+        //public ArrayList<Column> columns = new ArrayList<Column>(4);
+        for(int i=0; i<4; i++){
+            columns[i] = new Column();
         }
     }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
 
-        int beforeSize = deck.size();
+        int beforeSize = 52;
         System.out.println("Size of deck before deal is" + beforeSize);     //find the initial size of the deck
 
         for(int i = 0; i < 4; i++)
         {
-            Card topCard = deck.get(0);     //get topmost card from deck
+                //get topmost card from deck
 
-            deck.remove(0);           //remove the card from the deck
+            Card topCard = deck.cards.get(0);        //remove the card from the deck
 
-            addCardToCol(i, topCard);       //add topmost card from deck into a column
+            columns[i].addCard(topCard);       //add topmost card from deck into a column
+
+            deck.cards.remove(0);
 
         }
 
-        int afterSize = deck.size();
+        int afterSize = deck.cards.size();
         System.out.println("Size of deck after deal is" + afterSize);       //the new size of the deck should be 4 less
     }
 
@@ -72,24 +47,29 @@ public class Game {
         // Implemented by Bharath P.
         // remove the top card from the indicated columns
 
-        if(columnHasCards(columnNumber)) {
-            //this.cols.get(columnNumber).remove(getTopCard(columnNumber));
-            if(isCardRemovable(getTopCard(columnNumber)) == true){
-                removeCardFromCol(columnNumber);
-            }
-            else{
-                System.out.println("---Sorry you can't remove this card---");
-            }
-        } else {
-            // output if columnHasCards returns false
-            System.out.println("---Sorry you can't remove from an empty column---");
+        boolean cardRem = false;
+
+        if(columnNumber > 4 || columnNumber < 0){
+            System.out.println("--Invalid Column Number--");
         }
+        else {
+            Card tempCard = columns[columnNumber].getTopCard();
+            cardRem = isCardRemovable(tempCard);
+        }
+
+        if(columnHasCards(columnNumber) == false || cardRem == false){
+            System.out.println("Sorry Can't Remove that Card");
+        }
+        else{
+            columns[columnNumber].removeCard();
+        }
+
     }
 
     private boolean columnHasCards(int columnNumber) {
         // Implemented by Bharath P.
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        if (this.cols.get(columnNumber).isEmpty()){
+        if (columns[columnNumber].colHasCards() == false){
             return false;
         } else {
             return true;
@@ -97,18 +77,26 @@ public class Game {
     }
 
     private Card getTopCard(int columnNumber) {
-        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
+        if(columnNumber > 4 || columnNumber < 0){
+            System.out.println("--Invalid Column Number--");
+            return null;
+        }
+        else{
+            return columns[columnNumber].col.get(columns[columnNumber].col.size()-1);
+        }
     }
 
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
-        if (!columnHasCards(columnTo))
+        if (columnHasCards(columnTo) == false)
         {
             Card moveCard = getTopCard(columnFrom); //gets top card
             if (moveCard.getValue() == 14) { // checks to see if the card is an Ace
-                addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
-                removeCardFromCol(columnFrom); //removes the top card from the "from" col
+                //addCardToCol(columnTo, moveCard); // adds moveCard to "to" col
+                //removeCardFromCol(columnFrom); //removes the top card from the "from" col
+                columns[columnTo].addCard(moveCard);
+                columns[columnFrom].removeCard();
             }
             else{
                 System.out.println("You can only move Aces.");
@@ -124,7 +112,7 @@ public class Game {
         for(int i = 0; i < 4; i++)
         {
 
-            if(getTopCard(i).getSuit() == tempCard.getSuit() && getTopCard(i).getValue() > tempCard.getValue())
+            if(tempCard.suit == columns[i].getTopCard().suit && tempCard.value < columns[i].getTopCard().value)
             {
                 return true;
             }
@@ -132,11 +120,5 @@ public class Game {
         return false;
     }
 
-    private void addCardToCol(int columnTo, Card cardToMove) {
-        cols.get(columnTo).add(cardToMove);
     }
 
-    private void removeCardFromCol(int colFrom) {
-        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
-    }
-}

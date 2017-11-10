@@ -24,6 +24,7 @@ import ninja.Results;
 import com.google.inject.Singleton;
 import ninja.params.PathParam;
 
+
 @Singleton
 public class ApplicationController {
 
@@ -33,8 +34,8 @@ public class ApplicationController {
     
     public Result gameGet(){
         Game g = new Game();
-        g.buildDeck();
-        g.shuffle();
+      //  g.buildDeck();
+      //  g.shuffle();
         g.dealFour();
 
         return Results.json().render(g);

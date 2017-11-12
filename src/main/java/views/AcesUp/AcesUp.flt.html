@@ -151,25 +151,25 @@ var card;
 
 $( '.columnOfCards .cardLocation' ).html("");
 
-    $.each(game.columns[0].col, function( key, val ) {
+    $.each(game.cols[0], function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c0 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.columns[1].col, function( key, val ) {
+    $.each(game.cols[1], function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c1 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.columns[2].col, function( key, val ) {
+    $.each(game.cols[2], function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c2 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.columns[3].col, function( key, val ) {
+    $.each(game.cols[3], function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c3 .l'+key ).html(card.value + card.suit);

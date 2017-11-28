@@ -31,9 +31,10 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
+        g.deck.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
@@ -48,12 +49,12 @@ public class ApplicationController {
 
     public Result removeCard(Context context, @PathParam("column") int colNumber, Game g){
         g.remove(colNumber);
-        return Results.json().render(g);
+        return  Results.json().render(g);
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
         g.move(colFrom,colTo);
-        return Results.json().render(g);
+        return  Results.json().render(g);
     }
 
 }

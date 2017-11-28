@@ -119,13 +119,11 @@
 </div>
 
 <script>
-
 var game;
-
 function display(game) {
 console.log(game);
-var card;
 
+var card;
     function buildCard()
     {
         if (card.value == 11)
@@ -137,7 +135,6 @@ var card;
         else if (card.value == 14)
             card.value = "A";
         else {}
-
         if (card.suit == "Hearts")
             card.suit = "<span class=\"cardColor\">\u2665</span>";
         else if (card.suit == "Diamonds")
@@ -149,40 +146,38 @@ var card;
         else {}
     }
 
+
 $( '.columnOfCards .cardLocation' ).html("");
 
-    $.each(game.cols[0], function( key, val ) {
+ $.each(game.columns[0].cards, function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c0 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.cols[1], function( key, val ) {
+ $.each(game.columns[1].cards, function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c1 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.cols[2], function( key, val ) {
+ $.each(game.columns[2].cards, function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c2 .l'+key ).html(card.value + card.suit);
     });
 
-    $.each(game.cols[3], function( key, val ) {
+ $.each(game.columns[3].cards, function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
         $( '#c3 .l'+key ).html(card.value + card.suit);
     });
+
 }
-
-// Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
-display(data);
 game = data;
+display(game);
 });
-
-
 $("#dealButton").click(function(){
 $.ajax({
   type: "POST",
@@ -190,13 +185,11 @@ $.ajax({
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
-        display(data);},
+        display(game);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
 });
-
-
 function removeCard(colNumber){
 $.ajax({
 type: "POST",
@@ -204,14 +197,11 @@ url: "/removeCard/"+colNumber,
 data: JSON.stringify(game),
 success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
 game = data;
-display(data);},
+display(game);},
 contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
-
 }
-
-
 $("#Remove1").click(function(){
     removeCard(0);
 });
@@ -224,8 +214,6 @@ $("#Remove3").click(function(){
 $("#Remove4").click(function(){
     removeCard(3);
 });
-
-
 $("#moveButton").click(function(){
 var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
@@ -235,54 +223,11 @@ $.ajax({
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
-        display(data);},
+        display(game);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
 });
-
-</script>
-
-<div class = error-backdrop" class="hidden"></div>
-<div id="error-modal" class="hidden">
-    <div class="modal-dialog">
-
-        <div class="modal-header">
-            <h3>ERROR</h3>
-            <button type="button" class="modal-close-button">&times;</button>
-        </div>
-
-        <div class="modal-body">
-            <p class="model-text">
-                You can only move to a column if the column is empty
-            </p>
-        </div>
-
-
-    </div>
-</div>
-
-<script>
-
-var moveButton = document.getElementById('moveButton');
-var hiddenStuff = document.getElementsByClassName('hidden');
-
-moveButton.addEventListener('click', function(){
-
-<!--if the column is empty -->
-for(var i = 0; i<hiddenStuff.length; i +=1){
-hiddenStuff[i].style.display = 'block';
-}
-});
-
-var closeButton = document.querySelector('button.modal-close-button');
-
-closeButton.addEventListener('click', function(){
-for(var j = 0; j<hiddenStuff.length; j+=1){
-hiddenStuff[j].style.display = 'none';
-}
-});
-
 </script>
 
 

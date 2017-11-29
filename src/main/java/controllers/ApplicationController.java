@@ -28,19 +28,55 @@ import ninja.params.PathParam;
 @Singleton
 public class ApplicationController {
 
+    public int flag = 0;
+
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
+    public Result spanishIndex() { return Results.html().template("views/AcesUp/SpanishAcesUp.flt.html"); }
+
+
 
     public Result gameGet(){
+        //System.out.println("in game");
         Game g = new Game();
+        //g.deck.shuffle();
+        //g.dealFour();
+
+        return Results.json().render(g);
+    }
+
+    public Result isEnglish(Game g){
+        g = new Game();
         g.deck.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
     }
 
+    public Result isSpanish(Game g) {
+        System.out.println("playing spanish game!");
+        flag = 1;
+        g = new Game();
+        g.deck.shuffle();
+        g.dealFour();
+
+
+        /*
+        if (flag == 0)
+            flag = 1;
+        else
+            flag = 0;
+
+        System.out.println("set spanish flag to " + flag);
+
+        */
+        return Results.json().render(g);
+
+    }
+
     public Result dealPost(Context context, Game g) {
+        //System.out.println("In deal post!");
         if(context.getRequestPath().contains("deal")){
             g.dealFour();
         }

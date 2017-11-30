@@ -28,12 +28,15 @@ import controllers.ApplicationController;
 public class Routes implements ApplicationRoutes {
 
     @Override
-    public void init(Router router) {  
+    public void init(Router router) {
         
         router.GET().route("/").with(ApplicationController.class, "index");
+        router.POST().route("/isSpanish").with(ApplicationController.class, "spanishIndex");
 
         router.GET().route("/game").with(ApplicationController.class, "gameGet");
+        router.POST().route("/isEnglish").with(ApplicationController.class, "isEnglish");
         router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
+        router.POST().route("/isSpanish").with(ApplicationController.class, "isSpanish");
         router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
         router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");
 

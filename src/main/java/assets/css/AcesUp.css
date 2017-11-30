@@ -230,7 +230,29 @@ width: 175px;
   background-color: rgba(0, 0, 0, 0.85);
 }
 
+#game-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
 #instruction-modal {
+  position: fixed;
+  padding-top: 250px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+
+#game-modal {
+  margin-top: 50px;
   position: fixed;
   padding-top: 250px;
   top: 0;
@@ -251,10 +273,26 @@ width: 175px;
   border-radius: 15px;
 }
 
-.instruction-header {
-  position: relative;
-  padding: 10px 20px;
+.game-dialog {
+  width: auto;
+  max-width: 400px;
+  min-width: 150px;
+  min-height: 150px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
 }
+
+.instruction-header {
+   position: relative;
+   padding: 10px 20px;
+ }
+
+ .game-header {
+    text-align: center;
+   position: relative;
+   padding: 10px 20px;
+ }
 
 .instruction-header h3 {
   margin: 0;
@@ -276,6 +314,15 @@ width: 175px;
   padding: 20px;
 }
 
+.game-body {
+   text-align: center;
+  padding: 20px;
+}
+
+.game-footer{
+    text-align: center;
+    padding 20px;
+}
 
 table{
     width:125px;

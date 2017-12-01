@@ -30,40 +30,22 @@ import ninja.params.PathParam;
 @Singleton
 public class ApplicationController {
 
-    public int flag = 0;
-
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    public Result spanishIndex() { return Results.html().template("views/AcesUp/SpanishAcesUp.flt.html"); }
-
-    /*
-    public Result gameGet(){
-        //System.out.println("in game");
 
 
-        //g.deck.shuffle();
-        //g.dealFour();
-
-        return Results.json().render(g);
-    }
-    */
-
-    public Result gameGet(){
+    public Result game(){
         System.out.println("game!");
-        /*Game g = new Game();
+        Game g;
         g = new Game();
-        g.deck.shuffle();
-        g.dealFour();*/
-        SpanishGame g;
-        g = new SpanishGame();
         g.deck.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
     }
 
-    public Result gameGet_Spanish() {
+    public Result gameSpanish() {
         System.out.println("playing spanish game!");
         SpanishGame g;
         g = new SpanishGame();
@@ -71,10 +53,9 @@ public class ApplicationController {
         g.dealFour();
 
         return Results.json().render(g);
-
     }
 
-    public Result dealPost(Context context, SpanishGame g) {
+    public Result dealPostEnglish(Context context, Game g) {
         System.out.println("In deal post!");
         if(context.getRequestPath().contains("deal")){
             System.out.println("in the if statement in deal post");
@@ -83,12 +64,31 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-    public Result removeCard(Context context, @PathParam("column") int colNumber, SpanishGame g){
+    public Result dealPostSpanish(Context context, SpanishGame g) {
+        System.out.println("In deal post!");
+        if(context.getRequestPath().contains("deal")){
+            System.out.println("in the if statement in deal post");
+                g.dealFour();
+        }
+        return Results.json().render(g);
+    }
+
+    public Result removeCardEnglish(Context context, @PathParam("column") int colNumber, Game g){
         g.remove(colNumber);
         return  Results.json().render(g);
     }
 
-    public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, SpanishGame g){
+    public Result removeCardSpanish(Context context, @PathParam("column") int colNumber, SpanishGame g){
+        g.remove(colNumber);
+        return  Results.json().render(g);
+    }
+
+    public Result moveCardEnglish(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
+        g.move(colFrom,colTo);
+        return  Results.json().render(g);
+    }
+
+    public Result moveCardSpanish(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, SpanishGame g){
         g.move(colFrom,colTo);
         return  Results.json().render(g);
     }

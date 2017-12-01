@@ -9,18 +9,17 @@ public class SpanishDeck extends Deck{
     public java.util.List<SpanishCard> cards = new ArrayList<>();
 
     public SpanishDeck() {
-        for(int i = 2; i < 14; i++){
+        // Adds the 50 standard cards
+        for(int i = 1; i < 13; i++){
             cards.add(new SpanishCard(i,SpanishSuit.Bastos));
             cards.add(new SpanishCard(i,SpanishSuit.Oros));
             cards.add(new SpanishCard(i,SpanishSuit.Copas));
             cards.add(new SpanishCard(i,SpanishSuit.Espadas));
         }
 
-        for(int j = 14; j < 16; j++) {
-            cards.add(new SpanishCard(j,SpanishSuit.Comodines));
-            cards.add(new SpanishCard(j,SpanishSuit.Comodines));
-        }
-
+        // Adds the 2 jokers
+        cards.add(new SpanishCard(13,SpanishSuit.Comodines));
+        cards.add(new SpanishCard(13,SpanishSuit.Comodines));
     }
 
     public void shuffle() {

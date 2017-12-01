@@ -162,7 +162,7 @@
 
 
 <script>
-var isSpanish;
+var isSpanish = -1;
 var game;
 function display(game) {
 console.log(game);
@@ -190,7 +190,7 @@ var card;
         else {}
     }
 
-        function buildSpanishCard()
+    function buildSpanishCard()
     {
         if (card.value == 11)
             card.value = "J";
@@ -206,16 +206,19 @@ var card;
         else if (card.suit == "Oros")
             card.suit = "<span class=\"cardColor\">\u20BF</span>";
         else if (card.suit == "Copas")
-            card.suit = "\u26FE";
+            card.suit = "\u2294";
         else if (card.suit == "Espadas")
             card.suit = "\u2694";
         else if (card.suit == "Comodines")
-            card.suit = "\u1F0DF";
+            card.suit = "\u263A";
         else {}
     }
 
 
 $( '.columnOfCards .cardLocation' ).html("");
+
+    if (isSpanish == 1)
+    {
      $.each(game.columns[0].spanishCards, function( key, val ) {
             card = {value : val.value, suit : val.suit};
             buildSpanishCard();
@@ -239,7 +242,9 @@ $( '.columnOfCards .cardLocation' ).html("");
             buildSpanishCard();
             $( '#c3 .l'+key ).html(card.value + card.suit);
         });
-/*
+    }
+    else if (isSpanish == 0)
+    {
      $.each(game.columns[0].cards, function( key, val ) {
         card = {value : val.value, suit : val.suit};
         buildCard();
@@ -263,14 +268,16 @@ $( '.columnOfCards .cardLocation' ).html("");
             buildCard();
             $( '#c3 .l'+key ).html(card.value + card.suit);
         });
- */
+     }
 }
-$.getJSON("http://localhost:8080/game", function( data ) {
+/*$.getJSON("http://localhost:8080/game", function( data ) {
 game = data;
 display(game);
-});
+});*/
 
 $("#EnglishButton").click(function(){
+    isSpanish = 0;
+    /*
     $.ajax({
         type: "POST",
         url: "/gameGet",
@@ -283,9 +290,17 @@ $("#EnglishButton").click(function(){
         contentType:"application/json; charset=utf-8",
         dataType:"json",
     });
+    */
+    $.getJSON("http://localhost:8080/game", function( data ) {
+    game = data;
+    display(game);
+});
+
 });
 
 $("#SpanishButton").click(function(){
+    isSpanish = 1;
+    /*
     $.ajax({
         type: "POST",
         url: "/gameGet_Spanish",
@@ -298,24 +313,49 @@ $("#SpanishButton").click(function(){
         contentType:"application/json; charset=utf-8",
         dataType:"json",
     });
+    */
+    $.getJSON("http://localhost:8080/gameSpanish", function( data ) {
+    game = data;
+    display(game);
+});
 });
 
 $("#dealButton").click(function(){
-    $.ajax({
-      type: "POST",
-      url: "/dealGame",
-      data: JSON.stringify(game),
-      success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-            game = data;
-            display(game);},
-      contentType:"application/json; charset=utf-8",
-      dataType:"json",
-    });
+    if (isSpanish == 0) {
+        $.ajax({
+          type: "POST",
+          url: "/dealGameEnglish",
+          data: JSON.stringify(game),
+          success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+                game = data;
+                display(game);},
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+        });
+    }
+    else if (isSpanish == 1) {
+        $.ajax({
+          type: "POST",
+          url: "/dealGameSpanish",
+          data: JSON.stringify(game),
+          success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+                game = data;
+                display(game);},
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+        });
+    }
 });
 function removeCard(colNumber){
+    var string; // Holds path
+    if (isSpanish == 0)
+        string = "/removeCardEnglish/"+colNumber;
+    else if (isSpanish == 1)
+        string = "/removeCardSpanish/"+colNumber;
+
     $.ajax({
     type: "POST",
-    url: "/removeCard/"+colNumber,
+    url: string,
     data: JSON.stringify(game),
     success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
     game = data;
@@ -336,12 +376,20 @@ $("#Remove3").click(function(){
 $("#Remove4").click(function(){
     removeCard(3);
 });
+
 $("#moveButton").click(function(){
 var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
+
+var string; // Holds path
+if (isSpanish == 0)
+    string = "/moveCardEnglish/"+colFrom+"/"+colTo;
+else if (isSpanish == 1)
+    string = "/moveCardSpanish/"+colFrom+"/"+colTo;
+
 $.ajax({
   type: "POST",
-  url: "/moveCard/"+colFrom+"/"+colTo,
+  url: string,
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;

@@ -31,18 +31,16 @@ public class Routes implements ApplicationRoutes {
     public void init(Router router) {
         
         router.GET().route("/").with(ApplicationController.class, "index");
-        //router.POST().route("/isSpanish").with(ApplicationController.class, "spanishIndex");
 
-        //router.GET().route("/game").with(ApplicationController.class, "gameGet");
-        //router.GET().route("/isEnglish").with(ApplicationController.class, "isEnglish");
-        //router.GET().route("/isSpanish").with(ApplicationController.class, "isSpanish");
+        router.GET().route("/game").with(ApplicationController.class, "game");
+        router.GET().route("/gameSpanish").with(ApplicationController.class, "gameSpanish");
 
-        router.GET().route("/game").with(ApplicationController.class, "gameGet");
-        router.GET().route("/gameGet_Spanish").with(ApplicationController.class, "gameGet_Spanish");
-
-        router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
-        router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
-        router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");
+        router.POST().route("/dealGameEnglish").with(ApplicationController.class, "dealPostEnglish");
+        router.POST().route("/dealGameSpanish").with(ApplicationController.class, "dealPostSpanish");
+        router.POST().route("/moveCardEnglish/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCardEnglish");
+        router.POST().route("/moveCardSpanish/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCardSpanish");
+        router.POST().route("/removeCardEnglish/{column}").with(ApplicationController.class, "removeCardEnglish");
+        router.POST().route("/removeCardSpanish/{column}").with(ApplicationController.class, "removeCardSpanish");
 
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)

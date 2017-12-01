@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Game {
 
-    public Deck deck = new Deck();
+    public int languageFlag; // 0 is english, 1 is spanish
+
+    public EnglishDeck deck = new EnglishDeck();
     public java.util.List<Column> columns = new ArrayList<>();
 
     public Game(){

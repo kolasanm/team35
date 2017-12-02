@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Assignment1" target="1.7" />
+      <module name="Sprint4" target="1.7" />
       <module name="Sprint1" target="1.7" />
     </bytecodeTargetLevel>
   </component>

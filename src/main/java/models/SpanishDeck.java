@@ -29,14 +29,15 @@ public class SpanishDeck extends Deck{
 
 
     public ArrayList<SpanishCard> dealQuattro() {
-        System.out.println("Deal Quattro!");
         ArrayList<SpanishCard> four = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            if (cards.size() > 0) {
+            if (cards.size() >= 2) {
                 four.add(cards.get(i));
                 cards.remove(i);
+                System.out.println("size of deck" + cards.size());
             }
         }
+        System.out.println("size of four " + four.size());
         return four;
     }
 

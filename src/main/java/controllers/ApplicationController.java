@@ -36,7 +36,7 @@ public class ApplicationController {
 
 
     public Result game(){
-        System.out.println("game!");
+        System.out.println("playing english game!");
         Game g;
         g = new Game();
         g.deck.shuffle();
@@ -56,18 +56,14 @@ public class ApplicationController {
     }
 
     public Result dealPostEnglish(Context context, Game g) {
-        System.out.println("In deal post!");
         if(context.getRequestPath().contains("deal")){
-            System.out.println("in the if statement in deal post");
             g.dealFour();
         }
         return Results.json().render(g);
     }
 
     public Result dealPostSpanish(Context context, SpanishGame g) {
-        System.out.println("In deal post!");
         if(context.getRequestPath().contains("deal")){
-            System.out.println("in the if statement in deal post");
                 g.dealFour();
         }
         return Results.json().render(g);

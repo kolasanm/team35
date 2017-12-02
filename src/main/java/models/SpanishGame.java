@@ -15,11 +15,9 @@ public class SpanishGame extends Game {
     }
 
     public void dealFour() {
-        System.out.println("Card Dealt");
         ArrayList<SpanishCard> deal = deck.dealQuattro();
         for (int i = 0; i < deal.size(); i++) {
             SpanishCard s = deal.get(i);
-            //System.out.println(deal.get(i));
             columns.get(i).spanishCards.add(s);
         }
     }
@@ -41,14 +39,24 @@ public class SpanishGame extends Game {
         if(columnHasCards(columnNumber)) {
             SpanishCard s = getTopCard(columnNumber);
             boolean removeCard = false;
+            boolean hasJoker = false;
             for (int i = 0; i < 4; i++) {
                 if (i != columnNumber) {
                     if (columnHasCards(i)) {
                         SpanishCard compare = getTopCard(i);
-                        if (compare.getSuit() == s.getSuit()) {
-                            if (compare.getValue() > s.getValue()) {
-                                removeCard = true;
+                        if(compare.value == 13) {
+                            hasJoker = true;
+                            this.columns.get(i).spanishCards.remove(this.columns.get(i).spanishCards.size() - 1);
+                        }
+                        if(!hasJoker) {
+                            if (compare.getSuit() == s.getSuit()) {
+                                if (compare.getValue() > s.getValue()) {
+                                    removeCard = true;
+                                }
                             }
+                        }
+                        else{
+                            removeCard = true;
                         }
                     }
                 }

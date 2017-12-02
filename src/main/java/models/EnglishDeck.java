@@ -26,14 +26,12 @@ public class EnglishDeck extends Deck{
     public ArrayList<Card> dealFour() {
         System.out.println("in english deal four");
         ArrayList<Card> four = new ArrayList<>();
-        if (cards.size() >= 4) {
             for (int i = 0; i < 4; i++) {
-                four.add(cards.get(i));
-                cards.remove(i);
-                System.out.println("size of deck" + cards.size());
+                if (cards.size() > 0) {
+                    four.add(cards.get(0));
+                    cards.remove(0);
             }
         }
-        System.out.println("size of four " + four.size());
         return four;
     }
 }

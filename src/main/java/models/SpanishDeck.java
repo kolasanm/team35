@@ -31,13 +31,11 @@ public class SpanishDeck extends Deck{
     public ArrayList<SpanishCard> dealQuattro() {
         ArrayList<SpanishCard> four = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            if (cards.size() >= 2) {
-                four.add(cards.get(i));
-                cards.remove(i);
-                System.out.println("size of deck" + cards.size());
+            if (cards.size() > 0) {
+                four.add(cards.get(0));
+                cards.remove(0);
             }
         }
-        System.out.println("size of four " + four.size());
         return four;
     }
 

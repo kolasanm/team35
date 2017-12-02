@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
-public class SpanishGame extends Game {
+public class SpanishGame {
 
     public SpanishDeck deck = new SpanishDeck();
     public java.util.List<Column> columns = new ArrayList<>();
